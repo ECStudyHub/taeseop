@@ -1,0 +1,187 @@
+@font-face {
+  font-family: "Goyang";
+  src: url("fonts/Goyang.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body * {
+  font-family: Goyang;
+}
+
+body.dark-mode {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+#App {
+  margin: 1.5em auto;
+  max-width: 1200px;
+  column-gap: 1.5em;
+}
+
+/** 검색 결과 */
+.SearchResult {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(250px, 1fr));
+  grid-gap: 10px;
+}
+
+.SearchResult img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.SearchResult .item {
+  background-color: #eee;
+  display: inline-block;
+  margin: 0 0 1em;
+  width: 100%;
+}
+
+/** 검색 인풋 */
+.SearchInput {
+  width: 100%;
+  font-size: 40px;
+  padding: 10px 15px;
+}
+
+/** 최근 검색 키워드 */
+.RecentKeywords .keyword {
+  cursor: pointer;
+  margin: 0px 5px;
+}
+
+/** 상세 정보 모달 */
+.ImageInfo {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+  pointer-events: none;
+}
+
+.ImageInfo.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ImageInfo .title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ImageInfo .title,
+.ImageInfo .description {
+  padding: 5px;
+}
+
+.ImageInfo .content-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
+
+.ImageInfo .content-wrapper img {
+  width: 100%;
+}
+
+.ImageInfo .content-wrapper .title {
+  cursor: pointer;
+}
+
+/** 랜덤 배너 */
+.RandomCatBanner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.RandomCatBanner .cats {
+  display: flex;
+  overflow: hidden;
+}
+
+.RandomCatBanner .cats img {
+  width: 100px;
+  margin: 0 5px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.RandomCatBanner button {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.RandomCatBanner button:hover {
+  background-color: #f0f0f0;
+}
+
+/** 로딩 상태 */
+.loading-progress {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10%;
+  width: 40%;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
+/** 다크모드 */
+.dark-mode {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media (max-width: 992px) {
+  .SearchResult {
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .SearchResult {
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
+  }
+
+  .ImageInfo .content-wrapper {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .SearchResult {
+    grid-template-columns: repeat(1, minmax(250px, 1fr));
+  }
+}
